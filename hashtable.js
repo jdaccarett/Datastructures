@@ -105,6 +105,22 @@ HashTable.prototype.get = function(key) {
   }
 };
 
+//printAll the emails in the HashTable
+HashTable.prototype.printAll = function() {
+  var counter = 0;
+  for (var i = 0; i < this.numbuckets; i++) {
+    if(this.buckets[i]){
+      var currentNode = this.buckets[i];
+      while(currentNode) {
+        counter++;
+        console.log("Num: " + counter + " " + currentNode.value);
+        currentNode = currentNode.next;
+      }
+    }
+  }
+
+}
+
 
 
 var myHT = new HashTable(30);
@@ -115,6 +131,6 @@ myHT.insert('Megan', 'megan@gmail.com');
 myHT.insert('Dane', 'dane@yahoo.com');
 myHT.insert('Dean', 'deanmachine@gmail.com');
 
-
+myHT.printAll();
 
 console.log(myHT.get('Dean'));
